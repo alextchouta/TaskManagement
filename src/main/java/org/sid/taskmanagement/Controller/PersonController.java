@@ -27,8 +27,8 @@ public class PersonController {
     }
 
     @PostMapping("/persons")
-    public void CreateAndSavePerson(@RequestBody Person person){
-        this.personRepository.save(person);
+    public Person CreateAndSavePerson(@RequestBody Person person){
+        return this.personRepository.save(person);
     }
 
     @PutMapping("/persons/{id}")

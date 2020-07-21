@@ -25,8 +25,8 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public void CreateAndSaveTask(@RequestBody Task task){
-        this.taskRepository.save(task);
+    public Task  CreateAndSaveTask(@RequestBody Task task){
+        return this.taskRepository.save(task);
     }
 
     @PutMapping("/tasks/{id}")
