@@ -1,6 +1,7 @@
-package org.sid.securityservice.repositories;
+package org.sid.taskmanagement.security.repositories;
 
-import org.sid.securityservice.entities.AppUser;
+
+import org.sid.taskmanagement.security.entities.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

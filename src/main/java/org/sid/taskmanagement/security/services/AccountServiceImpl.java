@@ -1,17 +1,15 @@
-package org.sid.securityservice.service;
+package org.sid.taskmanagement.security.services;
 
 import lombok.AllArgsConstructor;
-import org.sid.securityservice.entities.AppRole;
-import org.sid.securityservice.entities.AppUser;
-import org.sid.securityservice.repositories.AppRoleRepository;
-import org.sid.securityservice.repositories.AppUserRepository;
-import org.springframework.context.annotation.Bean;
+
+import org.sid.taskmanagement.security.entities.AppRole;
+import org.sid.taskmanagement.security.entities.AppUser;
+import org.sid.taskmanagement.security.repositories.AppRoleRepository;
+import org.sid.taskmanagement.security.repositories.AppUserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Service
 @Transactional
@@ -53,10 +51,7 @@ public class AccountServiceImpl implements AccountService {
         AppUser appUser = appUserRepository.findByUsername(username);
 
         System.out.println("AppUser" + " " + appUser);
-        AppRole appRole = appRoleRepository.findByRoleName(roleName);
-/*        Collection<AppRole> roles = new ArrayList();
-        roles.add(appRole);
-        appUser.setRoles(roles);*/
+        AppRole appRole = appRoleRepository.findByRole(roleName);
         appUser.getRoles().add(appRole);
     }
 }

@@ -1,8 +1,9 @@
-package org.sid.securityservice.web;
+package org.sid.taskmanagement.security.web;
 
-import org.sid.securityservice.entities.AppUser;
-import org.sid.securityservice.entities.UserForm;
-import org.sid.securityservice.service.AccountService;
+
+import org.sid.taskmanagement.security.entities.AppUser;
+import org.sid.taskmanagement.security.entities.RegistrationForm;
+import org.sid.taskmanagement.security.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +15,8 @@ public class UserController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/register")
-    public AppUser register(@RequestBody UserForm userForm){
-        return accountService.saveUser(userForm.getUsername(),userForm.getPassword(),userForm.getConfirmedPassword());
+    @PostMapping("/users")
+    public AppUser register(@RequestBody RegistrationForm data){
+        return accountService.saveUser(data.getUsername(),data.getPassword(),data.getConfirmedPassword());
     }
 }

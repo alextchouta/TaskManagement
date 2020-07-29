@@ -1,4 +1,4 @@
-package org.sid.securityservice.entities;
+package org.sid.taskmanagement.security.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +19,5 @@ public class AppRole {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String roleName;
+    private String role;
 }

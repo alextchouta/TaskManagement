@@ -1,7 +1,8 @@
-package org.sid.securityservice.service;
+package org.sid.taskmanagement.security.services;
 
-import org.sid.securityservice.entities.AppRole;
-import org.sid.securityservice.entities.AppUser;
+
+import org.sid.taskmanagement.security.entities.AppRole;
+import org.sid.taskmanagement.security.entities.AppUser;
 
 public interface AccountService {
 

@@ -1,4 +1,4 @@
-package org.sid.securityservice.security;
+package org.sid.taskmanagement.security.JWT;
 
 public interface SecurityParams {
     public static final String HEADER_NAME ="AUthorization";

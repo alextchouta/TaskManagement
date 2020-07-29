@@ -1,4 +1,4 @@
-package org.sid.securityservice.security;
+package org.sid.taskmanagement.security.JWT;
 
 import org.sid.securityservice.entities.AppUser;
 import org.sid.securityservice.service.AccountService;

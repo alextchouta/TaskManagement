@@ -1,4 +1,4 @@
-package org.sid.securityservice.security;
+package org.sid.taskmanagement.security.JWT;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;

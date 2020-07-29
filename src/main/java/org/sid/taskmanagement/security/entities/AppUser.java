@@ -1,4 +1,4 @@
-package org.sid.securityservice.entities;
+package org.sid.taskmanagement.security.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
