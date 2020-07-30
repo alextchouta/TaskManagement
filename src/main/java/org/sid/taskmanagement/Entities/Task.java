@@ -22,7 +22,7 @@ public class Task implements Serializable {
 
     private String description;
 
-    private TaskState state;
+    private String state;
 
     @ManyToOne
     private Person person;

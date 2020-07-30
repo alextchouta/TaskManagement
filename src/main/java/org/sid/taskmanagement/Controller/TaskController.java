@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,7 +59,7 @@ public List<Task> listTasks(){
 
     }
 
-    @PutMapping("/tasks/{id}")
+/*    @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable(name = "id") Long id, @RequestBody Task task) {
         Optional<Task> taskData = taskRepository.findById(id);
 
@@ -77,6 +76,13 @@ public List<Task> listTasks(){
         }
 
 
+    }*/
+
+
+    @RequestMapping(value = "/tasks/{id}", method = RequestMethod.PUT)
+    public Task update(@PathVariable  Long id, @RequestBody Task task){
+        task.setId(id);
+        return taskRepository.save(task);
     }
 
     @DeleteMapping("/tasks/{id}")

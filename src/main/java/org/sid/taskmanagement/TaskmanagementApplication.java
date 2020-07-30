@@ -36,9 +36,9 @@ public class TaskmanagementApplication {
             personRepository.save(p3);
 
             // une tache ne peut etre attribuee qu a une seule personne
-            Task task1 = new Task(1L, "Task-01", "backend", TaskState.COMMITED, p1);
+            Task task1 = new Task(1L, "Task-01", "backend", "COMMITED", p1);
             taskRepository.save(task1);
-            Task task2 = new Task(2L, "Task-02", "frontend", TaskState.COMMITED, p2);
+            Task task2 = new Task(2L, "Task-02", "frontend", "COMMITED", p2);
             taskRepository.save(task2);
 
             // Save les roles
