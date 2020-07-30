@@ -26,4 +26,9 @@ export class NewTaskComponent implements OnInit {
       this.mode = 0;
     })
   }*/
+  onSaveTask(value: any) {
+    this.authService.saveTask(value).subscribe(data =>{
+      alert("SUCCESS");
+    })
+  }
 }

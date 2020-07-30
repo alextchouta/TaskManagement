@@ -9,6 +9,7 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
 import { RegisterComponent } from './components/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {FormsModule} from "@angular/forms";
     TasksComponent,
     NewTaskComponent,
     RegisterComponent,
+    EditTaskComponent,
 
   ],
   imports: [

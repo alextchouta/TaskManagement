@@ -27,4 +27,8 @@ public tasks:any;
   onNewTask() {
   this.router.navigateByUrl('/new-task')
   }
+
+  onEditTask(id: number) {
+    this.router.navigate(["editTask", id]);
+  }
 }

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {User} from "../components/model/User";
+import {UserTask} from "../components/model/Task";
+import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +56,15 @@ export class AuthentificationService {
   public logout(){
     localStorage.removeItem('token');
     this.admin = 0;
+  }
+
+  updateTask(id:number, task){
+    let headers = new HttpHeaders();
+    headers.append('Authorization', this.jwToken);
+    return this.http.put("http://localhost:8080/tasks/"+id, task,{headers: new HttpHeaders({'Authorization':this.jwToken})});
+  }
+
+  getTaskById(id:number):Observable<UserTask>{
+    return this.http.get<UserTask>("http://localhost:8080/tasks/"+id,{headers: new HttpHeaders({'Authorization':this.jwToken})});
   }
 }

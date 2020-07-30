@@ -4,11 +4,13 @@ import {LoginComponent} from "./components/login/login.component";
 import {TasksComponent} from "./components/tasks/tasks.component";
 import {NewTaskComponent} from "./components/new-task/new-task.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {EditTaskComponent} from "./components/edit-task/edit-task.component";
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'tasks', component:TasksComponent},
   {path:'new-task', component:NewTaskComponent},
+  {path:'editTask/:id', component:EditTaskComponent},
   {path:'register', component:RegisterComponent},
   {path:'', redirectTo:'/login', pathMatch:'full'}
 ];
