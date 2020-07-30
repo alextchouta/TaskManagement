@@ -5,10 +5,16 @@ import org.sid.taskmanagement.Entities.Task;
 import org.sid.taskmanagement.Enumeration.TaskState;
 import org.sid.taskmanagement.Repositories.PersonRepository;
 import org.sid.taskmanagement.Repositories.TaskRepository;
+import org.sid.taskmanagement.security.entities.AppRole;
+import org.sid.taskmanagement.security.repositories.AppUserRepository;
+import org.sid.taskmanagement.security.services.AccountService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class TaskmanagementApplication {
@@ -18,7 +24,7 @@ public class TaskmanagementApplication {
     }
 
     @Bean
-    CommandLineRunner start (TaskRepository taskRepository, PersonRepository personRepository){
+    CommandLineRunner start (TaskRepository taskRepository, PersonRepository personRepository, AccountService accountService, AppUserRepository appUserRepository){
         return args -> {
 
             // une Personne peut faire plusieurs taches differentes
@@ -34,9 +40,26 @@ public class TaskmanagementApplication {
             taskRepository.save(task1);
             Task task2 = new Task(2L, "Task-02", "frontend", TaskState.COMMITED, p2);
             taskRepository.save(task2);
-        }
 
-        ;
+            // Save les roles
+            accountService.saveAppRole(new AppRole(null, "USER"));
+            accountService.saveAppRole(new AppRole(null, "ADMIN"));
+
+            Stream.of("user1", "user2", "user3", "admin").forEach(u ->{
+                accountService.saveUser(u, "1234", "1234");
+            });
+            accountService.addRoleToUser("admin", "ADMIN");
+            appUserRepository.findAll().forEach(u->{
+                System.out.println("Name:" + " " + u.getUsername() + " " + "Roles" + " " + u.getRoles());
+            });
+        };
+
+
+    }
+
+    @Bean
+    BCryptPasswordEncoder getBPCE(){
+        return new BCryptPasswordEncoder();
     }
 
 }

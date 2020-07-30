@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 public class RegistrationForm {
     String username;
     String password;
-    String confirmedPassword;
+    String repassword;
 }

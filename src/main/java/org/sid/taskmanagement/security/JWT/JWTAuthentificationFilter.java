@@ -26,6 +26,7 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
     private AuthenticationManager authenticationManager;
 
     public JWTAuthentificationFilter(AuthenticationManager authenticationManager){
+        super();
         this.authenticationManager = authenticationManager;
     }
 
@@ -58,7 +59,7 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
                         .withExpiresAt(new Date(System.currentTimeMillis()+SecurityParams.EXPIRATION))
                         .sign(Algorithm.HMAC256(SecurityParams.SECRET));
 
-        response.addHeader(SecurityParams.HEADER_NAME, jwt);
+        response.addHeader(SecurityParams.HEADER_NAME, SecurityParams.HEADER_PREFIX+jwt);
     }
 
     @Override

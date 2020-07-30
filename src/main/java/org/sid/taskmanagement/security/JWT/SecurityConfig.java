@@ -2,6 +2,7 @@ package org.sid.taskmanagement.security.JWT;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
          // on desactive les sessions, spring ne garde plus rien en memoire. Notre session est le token
          http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-         http.authorizeRequests().antMatchers("/login/**", "/register/**").permitAll();
+         http.authorizeRequests().antMatchers("/login/**", "/users/**").permitAll();
+         http.authorizeRequests().antMatchers(HttpMethod.POST,"/tasks/**").hasAuthority("ADMIN");
          http.authorizeRequests().antMatchers("/appUsers/**","/appRoles/**").hasAuthority("ADMIN");
          http.authorizeRequests().anyRequest().authenticated();
 

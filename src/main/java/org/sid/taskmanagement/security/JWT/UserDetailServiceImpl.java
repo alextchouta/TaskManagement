@@ -1,7 +1,8 @@
 package org.sid.taskmanagement.security.JWT;
 
-import org.sid.securityservice.entities.AppUser;
-import org.sid.securityservice.service.AccountService;
+
+import org.sid.taskmanagement.security.entities.AppUser;
+import org.sid.taskmanagement.security.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,7 +30,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if(appUser ==null) throw new UsernameNotFoundException("User does not exists");
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         appUser.getRoles().forEach(r ->{
-            authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
+            authorities.add(new SimpleGrantedAuthority(r.getRole()));
         });
 
         return new User(appUser.getUsername(), appUser.getPassword(),authorities);

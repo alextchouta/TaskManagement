@@ -17,6 +17,6 @@ public class UserController {
 
     @PostMapping("/users")
     public AppUser register(@RequestBody RegistrationForm data){
-        return accountService.saveUser(data.getUsername(),data.getPassword(),data.getConfirmedPassword());
+        return accountService.saveUser(data.getUsername(),data.getPassword(),data.getRepassword());
     }
 }

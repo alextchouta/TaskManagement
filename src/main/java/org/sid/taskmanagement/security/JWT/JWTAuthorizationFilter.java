@@ -52,9 +52,9 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
             });
 
             // verification des credentials
-            UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(username, null, authorities);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
 
-            SecurityContextHolder.getContext().setAuthentication(user);
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
             filterChain.doFilter(request, response);
         }

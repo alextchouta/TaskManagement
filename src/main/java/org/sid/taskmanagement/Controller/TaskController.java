@@ -28,7 +28,7 @@ public class TaskController {
         }
     }
 
-    @GetMapping("/tasks")
+/*    @GetMapping("/tasks")
     public ResponseEntity<List<Task>> findAllTasks() {
         List<Task> tasks = new ArrayList<>();
         try {
@@ -43,7 +43,12 @@ public class TaskController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
+    }*/
+
+@GetMapping("/tasks")
+public List<Task> listTasks(){
+    return taskRepository.findAll();
+}
 
     @PostMapping("/tasks")
     public ResponseEntity<Task> CreateAndSaveTask(@RequestBody Task task) {
