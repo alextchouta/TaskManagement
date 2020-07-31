@@ -27,7 +27,8 @@ export class EditTaskComponent implements OnInit {
   updateTask() {
 
   this.authService.updateTask(this.task.id, this.task).subscribe(data =>{
-    alert('UPDATE OK')
+    alert('UPDATE OK');
+    this.mode = 2;
   });
   }
 
