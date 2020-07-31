@@ -31,4 +31,13 @@ public tasks:any;
   onEditTask(id: number) {
     this.router.navigate(["editTask", id]);
   }
+
+  onDeleteTask(id: number) {
+    let confirm = window.confirm('Etes vous sure de vouloir?');
+    if(confirm){
+      this.authService.deleteById(id).subscribe(data =>{
+        alert("Suppression Confirme")
+      });
+    }
+}
 }

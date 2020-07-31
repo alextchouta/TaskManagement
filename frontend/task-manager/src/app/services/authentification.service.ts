@@ -67,4 +67,8 @@ export class AuthentificationService {
   getTaskById(id:number):Observable<UserTask>{
     return this.http.get<UserTask>("http://localhost:8080/tasks/"+id,{headers: new HttpHeaders({'Authorization':this.jwToken})});
   }
+
+  deleteById(id:number){
+    return this.http.delete("http://localhost:8080/tasks/"+id,{headers: new HttpHeaders({'Authorization':this.jwToken})});
+  }
 }
